@@ -1,0 +1,3 @@
+What did you accomplish in this phase? What happens if you forget to include event.preventDefault() when handling a form submission in client-side JavaScript, and why is preventing the default behavior necessary when you do not have a backend server endpoint?
+
+Forgetting to include event.preventDefault() causes the browser to trigger its default submission behavior, which reloads the page instantly. As a result, any entered input data, DOM updates, or console logs disappear before they can be processed. Without a backend server endpoint, submitting the form simply reloads the static HTML page or triggers a 404 error if an invalid action URL is specified. 

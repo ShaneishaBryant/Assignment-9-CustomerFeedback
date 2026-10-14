@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunnydale Solutions</title>
+
+</head>
+<body>
+
+    <div id="error-box"></div> <!--hold validation messages-->
+
+    <form id="feedback-form">
+        <label for="reviewer-name">Your Name:</label>
+        <input type="text" id="reviewer-name" name="reviewer-name"> 
+
+        <label for="rating">Rate Your Experience</label>
+        <select id="rating" name="rating">
+            <option value="" disabled selected>Select a rating</option>
+            <option value="1">1 Star ⭐️</option>
+            <option value="2">2 Star ⭐️⭐️</option>
+            <option value="3">3 Star ⭐️⭐️⭐️</option>
+            <option value="4">4 Star ⭐️⭐️⭐️⭐️</option>
+            <option value="5">5 Star ⭐️⭐️⭐️⭐️⭐️</option>
+        </select>
+
+        <br>
+
+        <label for="comments">Feedback:</label><br>
+        <textarea id="comments" name="comments" rows="5" cols="40" placeholder="Write your comments here..."></textarea>
+
+        <br>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <script>
+        //select DOM elements 
+        const errorBox = document.getElementById('error-box');
+        const form = document.getElementById('feedback-form');
+
+        const nameInput = document.getElementById('reviewer-name');
+        const ratingInput = document.getElementById('rating');
+        const commentsInput = document.getElementById('comments');
+
+
+        //submit - event listener 
+        form.addEventListener('submit', function(event){
+            //prevent default browser submission 
+            event.preventDefault();
+
+            //clears pervious errors
+            errorBox.innerHTML= '';
+            errorBox.style.display = 'none';
+
+            let errors = [];
+
+            //extract current values at the time of submission 
+            const nameValue = nameInput.value.trim();
+            const ratingValue = ratingInput.value;
+            const commentsValue = commentsInput.value.trim();
+
+        
+
+            //log to console
+            console.log('Reviewer Name: ', nameValue);
+            console.log('Rating: ', ratingValue);
+            console.log('Comments: ', commentsValue);
+
+    })
+    </script>
+</body>
+</html>
