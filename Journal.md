@@ -25,3 +25,14 @@ I was able to retrieve information from localStorage to display for a returning 
 localStorage is simpler for client-only state because it offers a clean JavaScript API, provides a higher storage capacity, and keeps data strictly inside the browser without transmitting it over the network.
 
 In contrast, a website would prefer cookies when handling sensitive session tokens that require protection, when the server needs to read user state before returning the initial HTML, or when managing automatic data expiration attributes.
+
+
+
+Phase 4 Question
+What edge cases or unexpected behaviors did you encounter while testing your form validation and local storage? If you asked an AI tutor to review your code, what suggestions did it make, and how did you decide whether to adopt them.
+
+I did not encounter any unexpected behavior while testing, as the program worked correctly and met my expectations.
+
+When I ran the code through Gemini, it suggested replacing the inline styles in JavaScript with a dedicated CSS class, adding accessibility improvements, and fixing a few missing semicolons.
+
+I adopted the accessibility recommendations and added the missing semicolons to keep the code clean and accessible. However, I chose not to separate the inline JavaScript styles into CSS classes for this iteration. Because the current setup is functioning properly, I did not see an immediate need to alter the working code, though I do recognize the long-term maintainability benefits of separating style definitions from script logic in larger applications.

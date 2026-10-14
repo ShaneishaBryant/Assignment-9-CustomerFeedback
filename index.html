@@ -31,7 +31,7 @@
 <body>
     <div id="welcomeback-box"></div>
 
-    <div id="error-box"></div> <!--hold validation messages-->
+    <div id="error-box" role="alert" aria-live="assertive"></div> <!--hold validation messages-->
 
     <form id="feedback-form">
         <div>
@@ -69,7 +69,7 @@
 
     <script>
         //select DOM elements 
-        const welcomeBackBox = document.getElementById('welcomeback-box')
+        const welcomeBackBox = document.getElementById('welcomeback-box');
         const errorBox = document.getElementById('error-box');
         const form = document.getElementById('feedback-form');
 
@@ -130,7 +130,7 @@
 
                 //hide form submission upon successful submission
                 form.style.display = 'none';
-                welcomeBackBox.style.display = 'none'
+                welcomeBackBox.style.display = 'none';
 
                 errorBox.innerHTML = `Thank you, ${nameValue}! Your glowing review has been recorded.`;
                 errorBox.style.color = '#155724';
