@@ -14,31 +14,53 @@
             display: none;
             border-radius: 4px;
         }
+
+        #welcomeback-box {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin-bottom: 15px;
+            display: none;
+            border-radius: 4px;
+        }
+
     </style>
 
 </head>
 <body>
+    <div id="welcomeback-box"></div>
 
     <div id="error-box"></div> <!--hold validation messages-->
 
     <form id="feedback-form">
-        <label for="reviewer-name">Your Name:</label>
-        <input type="text" id="reviewer-name" name="reviewer-name"> 
-
-        <label for="rating">Rate Your Experience</label>
-        <select id="rating" name="rating">
-            <option value="" disabled selected>Select a rating</option>
-            <option value="1">1 Star ⭐️</option>
-            <option value="2">2 Star ⭐️⭐️</option>
-            <option value="3">3 Star ⭐️⭐️⭐️</option>
-            <option value="4">4 Star ⭐️⭐️⭐️⭐️</option>
-            <option value="5">5 Star ⭐️⭐️⭐️⭐️⭐️</option>
-        </select>
+        <div>
+            <label for="reviewer-name">Your Name:</label>
+            <input type="text" id="reviewer-name" name="reviewer-name"> 
+        </div>
 
         <br>
 
-        <label for="comments">Feedback:</label><br>
-        <textarea id="comments" name="comments" rows="5" cols="40" placeholder="Write your comments here..."></textarea>
+        <div>
+            <label for="rating">Rate Your Experience</label>
+            <select id="rating" name="rating">
+                <option value="" disabled selected>Select a rating</option>
+                <option value="1">1 Star ⭐️</option>
+                <option value="2">2 Star ⭐️⭐️</option>
+                <option value="3">3 Star ⭐️⭐️⭐️</option>
+                <option value="4">4 Star ⭐️⭐️⭐️⭐️</option>
+                <option value="5">5 Star ⭐️⭐️⭐️⭐️⭐️</option>
+            </select>
+        </div>
+
+
+        <br>
+
+        <div>
+            <label for="comments">Feedback:</label><br>
+            <textarea id="comments" name="comments" rows="5" cols="40" placeholder="Write your comments here..."></textarea>
+
+        </div>
 
         <br>
 
@@ -47,6 +69,7 @@
 
     <script>
         //select DOM elements 
+        const welcomeBackBox = document.getElementById('welcomeback-box')
         const errorBox = document.getElementById('error-box');
         const form = document.getElementById('feedback-form');
 
@@ -55,8 +78,21 @@
         const commentsInput = document.getElementById('comments');
 
 
+        //event listener that runs immediately on page load 
+        document.addEventListener('DOMContentLoaded', function (){
+            const savedName = localStorage.getItem('reviewerName');
+            if (savedName){
+                nameInput.value = savedName;
+
+                welcomeBackBox.innerHTML = `Welcome back, ${savedName}! Ready to submit another wonderful review?`;
+                welcomeBackBox.style.display = 'block';
+            }
+        });
+
+
         //submit - event listener 
         form.addEventListener('submit', function(event){
+
             //prevent default browser submission 
             event.preventDefault();
 
@@ -89,12 +125,24 @@
                 errorBox.innerHTML = errors.join('<br>');
                 errorBox.style.display = 'block';
             }else{
+                //save reviewer's name to local storage 
+                localStorage.setItem("reviewerName", nameValue);
+
+                //hide form submission upon successful submission
+                form.style.display = 'none';
+                welcomeBackBox.style.display = 'none'
+
+                errorBox.innerHTML = `Thank you, ${nameValue}! Your glowing review has been recorded.`;
+                errorBox.style.color = '#155724';
+                errorBox.style.backgroundColor = '#d4edda';
+                errorBox.style.borderColor = '#c3e6cb';
+                errorBox.style.display = 'block';
+
                 console.log('Reviewer Name: ', nameValue);
                 console.log('Rating: ', ratingValue);
                 console.log('Comments: ', commentsValue);
             }
-
-    })
+    });
     </script>
 </body>
 </html>

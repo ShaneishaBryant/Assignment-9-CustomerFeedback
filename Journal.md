@@ -15,3 +15,13 @@ I chose to display all error messages all at once upon submission.
 Pros: This approach allows users to fix all missing or invalid fields in a single pass rather than making them play a frustrating "guess-and-check" game. It also provides a clear, summary at the top of the form highlighting everything that requires attention.
 
 Cons: Because the errors are grouped together at the top rather than placed directly next to their respective input fields, users have to scan the form to match each message to its field. Additionally, if the form had severalbinputs, seeing a long list of error messages can feel overwhelming to the user.
+
+
+Phase 3 Question
+What did you accomplish in this phase? Compare using localStorage to cookies: why is localStorage often simpler to use for client-only state, and when might a website prefer cookies over localStorage?
+
+I was able to retrieve information from localStorage to display for a returning user.
+
+localStorage is simpler for client-only state because it offers a clean JavaScript API, provides a higher storage capacity, and keeps data strictly inside the browser without transmitting it over the network.
+
+In contrast, a website would prefer cookies when handling sensitive session tokens that require protection, when the server needs to read user state before returning the initial HTML, or when managing automatic data expiration attributes.
